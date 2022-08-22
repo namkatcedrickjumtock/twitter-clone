@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         />
       </Head>
 
-      <main>
+      <main className="grid grid-cols-12">
         {/* sidebar */}
         <SideBar />
 
