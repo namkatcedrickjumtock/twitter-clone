@@ -13,9 +13,9 @@ import SideBarsOptions from "./SideBarsOptions";
 
 const SideBar = () => {
   return (
-    <div className="col-span-2 flex flex-col">
+    <div className="col-span-2 flex flex-col items-center px-4 md:inline">
       <Image
-        className="h-10 w-10"
+        className="h-10 w-10 m-3"
         src="https://toppng.com/uploads/preview/twitter-logo-11549680523gyu1fhgduu.png"
         alt="logo"
         width={50}
