@@ -15,7 +15,7 @@ const Widgets = () => {
       </div>
       <TwitterTimelineEmbed
         sourceType="profile"
-        screenName="sonnysangha"
+        screenName="BillGates"
         options={{ height: 400 }}
       />
     </div>
