@@ -1,10 +1,17 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetServerSideProps } from "next";
 import Head from "next/head";
 import Feed from "../components/Feed";
 import SideBar from "../components/SideBar";
 import Widgets from "../components/Widgets";
+import { Tweet } from "../typings";
 
-const Home: NextPage = () => {
+interface tweetProps {
+  tweets: Tweet[];
+}
+
+const Home = ({ tweets }: tweetProps) => {
+  // console.log(tweets);
+
   return (
     <div className="lg:max-w-6xl mx-auto">
       <Head>
@@ -21,7 +28,7 @@ const Home: NextPage = () => {
         <SideBar />
 
         {/* feed */}
-        <Feed />
+        <Feed tweets={tweets} />
 
         {/* widgets */}
         <Widgets />
@@ -33,9 +40,20 @@ const Home: NextPage = () => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  // only accepts absolute paths
+  const NEXT_BASE_URL = "http://localhost:3000";
 
-  // const tweets = await fetch
+  const tweets = await fetch(`${NEXT_BASE_URL}/api/getTweets`).then(
+    async (res) => {
+      const data = await res.json();
+      const tweets: Tweet[] = data.tweet;
+      return tweets;
+    }
+  );
+
+// response fromsanity backend
+  // console.log(tweets);
   return {
-    props: {},
+    props: { tweets },
   };
 };

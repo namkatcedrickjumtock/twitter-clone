@@ -10,7 +10,7 @@ export const config = {
    * https://nextjs.org/docs/basic-features/environment-variables
    **/
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ,
   apiVersion: "2021-10-21", // Learn more: https://www.sanity.io/docs/api-versioning
   /**
    * Set useCdn to `false` if your application require the freshest possible
@@ -23,7 +23,7 @@ export const config = {
    * OPTIONAL config to enable authentication with custom token
    * You might need this if you host the preview on a different url than Sanity Studio
    */
-  token: "<sanity access token>",
+  token: process.env.SANITY_API_TOKEN,
   // EventSource: /* provide your own event source implementation. Required in browsers to support the above token parameter. */
 };
 
