@@ -57,7 +57,7 @@ const TweetFeed = ({ tweet }: Props) => {
       <div className="flex justify-between mt-5">
         <div className="flex cursor-pointer items-center space-x-4 text-gray-400">
           <ChatAlt2Icon className="h-5 w-5" />
-          <p>5</p>
+          <p>{comments?.length}</p>
         </div>
         <div className="flex cursor-pointer items-center space-x-4 text-gray-400">
           <SwitchHorizontalIcon className="h-5 w-5" />

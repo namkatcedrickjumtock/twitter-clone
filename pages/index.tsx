@@ -1,9 +1,11 @@
 import type { GetServerSideProps } from "next";
 import Head from "next/head";
+import { Toaster } from "react-hot-toast";
 import Feed from "../components/Feed";
 import SideBar from "../components/SideBar";
 import Widgets from "../components/Widgets";
 import { Tweet } from "../typings";
+import { fetchTweets } from "../utils/fetchTweets";
 
 interface tweetProps {
   tweets: Tweet[];
@@ -22,7 +24,7 @@ const Home = ({ tweets }: tweetProps) => {
           href="https://cdn.pixabay.com/photo/2018/06/22/19/03/logo-3491390_960_720.png"
         />
       </Head>
-
+      <Toaster />
       <main className="grid grid-cols-9">
         {/* sidebar */}
         <SideBar />
@@ -43,15 +45,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // only accepts absolute paths
   const NEXT_BASE_URL = "http://localhost:3000";
 
-  const tweets = await fetch(`${NEXT_BASE_URL}/api/getTweets`).then(
-    async (res) => {
-      const data = await res.json();
-      const tweets: Tweet[] = data.tweet;
-      return tweets;
-    }
-  );
+  const tweets = await fetchTweets();
 
-// response fromsanity backend
+  // response fromsanity backend
   // console.log(tweets);
   return {
     props: { tweets },
